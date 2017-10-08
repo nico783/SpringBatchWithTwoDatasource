@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.nordnet</groupId>
+	<artifactId>batchsecuritoo</artifactId>
+
+	<version>1.0.2-SNAPSHOT</version>
+
+	<packaging>jar</packaging>
+
+	<name>batchsecuritoo</name>
+	<description>batchsecuritoo import</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.4.RELEASE</version>
+		<relativePath />
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.7</java.version>
+		<org.springframework.version>3.2.5.RELEASE</org.springframework.version>
+		<blurredVersion>1.0.x</blurredVersion>
+	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>internal</id>
+			<name>Release repository</name>
+			<url>http://archiva.dvpt.nordnet.fr:8080/archiva/repository/internal/</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Snapshot repository</name>
+			<url>http://archiva.dvpt.nordnet.fr:8080/archiva/repository/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-batch</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+		</plugins>
+		<finalName>${project.artifactId}-${blurredVersion}</finalName>
+	</build>
+	<scm>
+		<connection>scm:git:ssh://git@stash.dvpt.nordnet.fr:7999/idr/batch-hermes.git</connection>
+		<developerConnection>scm:git:ssh://git@stash.dvpt.nordnet.fr:7999/idr/batch-hermes.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+</project>
